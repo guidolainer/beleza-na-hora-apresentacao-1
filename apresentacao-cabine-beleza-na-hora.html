@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELEZA NA HORA - A Beleza em Movimento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A single-page, scrolling narrative structure was chosen to guide the user through the business pitch like a story. It starts with a hero section, presents the problem and solution, details the business model and target market with interactive elements (chart, accordion), shows the implementation roadmap, and ends with a conclusion. This structure transforms a static document into an engaging, easy-to-digest web experience that builds a compelling case for the business. -->
+    <!-- Visualization & Content Choices: Target Market (Donut Chart via Chart.js) to visually break down demographics, making data engaging. Differentiators (Accordion with JS) to organize text-heavy content cleanly, allowing users to explore. Implementation Plan (HTML/CSS Timeline) to visually represent the project roadmap, making it more tangible and professional. These choices prioritize user interaction and clarity over static text. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FDF8F0;
+            color: #4A4A4A;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(253, 248, 240, 0.2), rgba(253, 248, 240, 1)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .accent-bg { background-color: #D9A99D; }
+        .accent-text { color: #D9A99D; }
+        .accent-bg-dark { background-color: #B98B7E; }
+        .accent-border { border-color: #D9A99D; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #D9A99D;
+            border: 3px solid #FDF8F0;
+        }
+        .timeline-path {
+            position: absolute;
+            left: -21px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #D9A99D;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-[#B98B7E]">BELEZA NA HORA</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#solucao" class="text-gray-700 hover:text-[#B98B7E] transition">A Solução</a>
+                <a href="#modelo" class="text-gray-700 hover:text-[#B98B7E] transition">Modelo</a>
+                <a href="#diferenciais" class="text-gray-700 hover:text-[#B98B7E] transition">Diferenciais</a>
+                <a href="#plano" class="text-gray-700 hover:text-[#B98B7E] transition">Plano</a>
+            </nav>
+            <a href="#contato" class="hidden md:block bg-[#D9A99D] text-white font-bold py-2 px-4 rounded-full hover:bg-[#B98B7E] transition">Contato</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-bg pt-32 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">A Beleza em Movimento.</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Uma solução de conveniência que empodera a mulher moderna, oferecendo flexibilidade e praticidade no seu dia a dia.</p>
+            </div>
+        </section>
+
+        <section id="problema" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-800">O Desafio Diário</h3>
+                    <p class="text-gray-500 mt-2">Identificamos uma necessidade real na rotina da mulher moderna.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-xl shadow-md">
+                    <p class="text-lg text-gray-700 leading-relaxed">A rotina da mulher moderna é cada vez mais corrida. Seja a caminho do trabalho, da faculdade, de um encontro ou de um evento, o tempo é um recurso escasso. A necessidade de um retoque rápido na maquiagem ou no cabelo surge de forma inesperada, e muitas vezes não há um local adequado, privado e com os equipamentos necessários.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucao" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-800">Nossa Solução Inovadora</h3>
+                    <p class="text-gray-500 mt-2">Apresentamos o BELEZA NA HORA.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/D9A99D/ffffff?text=BELEZA+NA+HORA" alt="Uma cabine moderna e compacta, representando o BELEZA NA HORA" class="rounded-xl shadow-2xl w-full">
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">O **BELEZA NA HORA** é uma cabine de beleza inteligente e compacta, estrategicamente localizada em pontos de grande fluxo. A cabine oferece um espaço privado, seguro e equipado com **secador de cabelo e chapinha de alta qualidade**, permitindo que a mulher faça retoques de forma rápida e eficiente.</p>
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <span class="text-3xl accent-text">✓</span>
+                                <h4 class="font-semibold mt-2">Conveniência</h4>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <span class="text-3xl accent-text">✓</span>
+                                <h4 class="font-semibold mt-2">Privacidade</h4>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <span class="text-3xl accent-text">✓</span>
+                                <h4 class="font-semibold mt-2">Higiene</h4>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <span class="text-3xl accent-text">✓</span>
+                                <h4 class="font-semibold mt-2">Economia de Tempo</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modelo" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-800">Modelo de Negócios e Mercado</h3>
+                     <p class="text-gray-500 mt-2">Como geramos valor e para quem.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div>
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-4">Fontes de Receita</h4>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-6 rounded-lg border-l-4 accent-border">
+                                <h5 class="font-bold text-lg">1. Modelo Padrão (Pay-per-use)</h5>
+                                <p class="text-gray-600 mt-2">Acesso à cabine por um período pré-determinado (ex: 15 ou 20 minutos) mediante pagamento via cartão de crédito, Pix ou aplicativo próprio.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border-l-4 accent-border">
+                                <h5 class="font-bold text-lg">2. Publicidade e Parcerias</h5>
+                                <p class="text-gray-600 mt-2">As paredes externas da cabine seriam usadas como telas digitais para anúncios de empresas de cosméticos, gerando receita adicional e criando parcerias estratégicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Nosso Público-Alvo</h4>
+                        <div class="chart-container">
+                            <canvas id="targetMarketChart"></canvas>
+                        </div>
+                         <p class="text-center text-gray-600 mt-4 text-sm">Distribuição estimada do nosso mercado principal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diferenciais" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-800">Nossos Diferenciais</h3>
+                    <p class="text-gray-500 mt-2">O que nos torna únicos no mercado.</p>
+                </div>
+                <div class="max-w-3xl mx-auto" id="accordion">
+                    <div class="accordion-item bg-white rounded-lg shadow-md mb-4">
+                        <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-gray-800">Cabine Social</span>
+                            <span class="accordion-icon text-2xl accent-text font-bold">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-6 pt-0 text-gray-600">Um modelo de cabine gratuita, financiada por patrocínios de empresas de cosméticos, a ser instalada em locais públicos e comunitários. Este modelo reforça o compromisso social da marca e aumenta a visibilidade.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-md mb-4">
+                        <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-gray-800">Tecnologia Integrada</span>
+                            <span class="accordion-icon text-2xl accent-text font-bold">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-6 pt-0 text-gray-600">Pagamento sem contato, sistema de agendamento via app e controle de tempo na cabine para uma experiência de usuário fluida e moderna.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-md mb-4">
+                        <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-gray-800">Design Inovador</span>
+                            <span class="accordion-icon text-2xl accent-text font-bold">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-6 pt-0 text-gray-600">Um visual moderno e atraente que se integra à paisagem urbana, transformando a cabine em um ponto de referência e desejo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plano" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-800">Plano de Implementação</h3>
+                    <p class="text-gray-500 mt-2">Nossos próximos passos para tornar o projeto uma realidade.</p>
+                </div>
+                <div class="max-w-2xl mx-auto relative">
+                    <div class="timeline-path"></div>
+                    <div class="space-y-12">
+                        <div class="timeline-item pl-8 relative">
+                            <h4 class="font-bold text-xl text-gray-800">1. Protótipo e Teste</h4>
+                            <p class="text-gray-600 mt-1">Criação de um protótipo funcional para testar a usabilidade, durabilidade dos equipamentos e coletar feedback valioso dos primeiros usuários.</p>
+                        </div>
+                        <div class="timeline-item pl-8 relative">
+                            <h4 class="font-bold text-xl text-gray-800">2. Busca de Locais</h4>
+                            <p class="text-gray-600 mt-1">Negociação de pontos estratégicos em parceria com shoppings, estações de metrô, centros empresariais e prefeituras para garantir máxima visibilidade e acesso.</p>
+                        </div>
+                        <div class="timeline-item pl-8 relative">
+                            <h4 class="font-bold text-xl text-gray-800">3. Desenvolvimento do Aplicativo</h4>
+                            <p class="text-gray-600 mt-1">Criação de um aplicativo intuitivo para agendamento, localização de cabines, pagamento e gestão da conta do usuário.</p>
+                        </div>
+                        <div class="timeline-item pl-8 relative">
+                            <h4 class="font-bold text-xl text-gray-800">4. Parcerias Estratégicas</h4>
+                            <p class="text-gray-600 mt-1">Captação de patrocínio com empresas de cosméticos para o modelo de publicidade e para viabilizar a iniciativa da Cabine Social.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-20 accent-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-4xl font-bold text-white">Vamos transformar o futuro da beleza urbana?</h3>
+                <p class="text-lg text-white/80 mt-4 max-w-3xl mx-auto">O BELEZA NA HORA tem o potencial de transformar a forma como as mulheres se preparam para enfrentar o mundo. Junte-se a nós nesta jornada.</p>
+                <button class="mt-8 bg-white text-[#B98B7E] font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition shadow-lg">Seja um Parceiro</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 BELEZA NA HORA. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Uma nova forma de pensar a beleza no seu dia a dia.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartCtx = document.getElementById('targetMarketChart').getContext('2d');
+            const targetMarketChart = new Chart(chartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Trabalhadoras (Centros Urbanos)', 'Estudantes Universitárias', 'Participantes de Eventos', 'Turistas e Outros'],
+                    datasets: [{
+                        label: 'Mercado-Alvo',
+                        data: [45, 30, 15, 10],
+                        backgroundColor: [
+                            '#B98B7E',
+                            '#D9A99D',
+                            '#E5C3B9',
+                            '#F0DED8'
+                        ],
+                        borderColor: '#FDF8F0',
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#4A4A4A',
+                                font: {
+                                    family: "'Roboto', sans-serif",
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+
+            const accordion = document.getElementById('accordion');
+            accordion.addEventListener('click', function(e) {
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+
+                const item = header.parentElement;
+                const content = item.querySelector('.accordion-content');
+                const icon = header.querySelector('.accordion-icon');
+                
+                item.classList.toggle('open');
+
+                if (item.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.textContent = '-';
+                } else {
+                    content.style.maxHeight = '0px';
+                    icon.textContent = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
